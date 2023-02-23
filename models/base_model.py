@@ -5,7 +5,7 @@ class BaseModel:
     def __init__(self, id=None):
         self.id = str(uuid4())
         self.created_at = datetime.datetime.now().isoformat()
-        self.updated_at = datetime.datetime.now().isoformat()
+        self.updated_at = datetime.datetime.now()
     
     def save(self):
         """update"""
