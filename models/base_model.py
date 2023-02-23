@@ -4,7 +4,7 @@ import datetime
 class BaseModel:
     def __init__(self, id=None):
         self.id = str(uuid4())
-        self.created_at = datetime.datetime.now().isoformat()
+        self.created_at = datetime.datetime.now()
         self.updated_at = datetime.datetime.now()
     
     def save(self):
@@ -18,7 +18,10 @@ class BaseModel:
         r = {}
         r ["__class__"] = __class__.__name__
         for key, value in self.__dict__.items():
-            r[key] = value
+            if type(value) is not int:
+                r[key] = str(value)
+            else:
+                r[key] = value
         return r
    
    
