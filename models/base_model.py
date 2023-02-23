@@ -9,7 +9,7 @@ class BaseModel:
     
     def save(self):
         """update"""
-        self.updated_at = datetime.datetime.now().isoformat()
+        self.updated_at = datetime.datetime.now()
 
     def __str__(self):
         return f"[{__class__.__name__}] ({self.id}) ({self.__dict__})"
