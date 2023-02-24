@@ -1,14 +1,27 @@
 #!/usr/bin/python3
 from uuid import uuid4
 import datetime
+from models import storage
 class BaseModel:
-    def __init__(self, id=None):
-        self.id = str(uuid4())
-        self.created_at = datetime.datetime.now()
-        self.updated_at = datetime.datetime.now()
+    def __init__(self, *args, **kwargs):
+        if len(kwargs) != 0:
+            for key, value in kwargs.items():
+                if key == "__class__":
+                    pass
+                else:
+                    try:
+                        setattr(self, key, datetime.datetime.fromisoformat(value))
+                    except Exception:
+                        setattr(self, key, value)
+        else:
+            self.id = str(uuid4())
+            self.created_at = datetime.datetime.now()
+            self.updated_at = datetime.datetime.now()
+            storage.new(self)
     
     def save(self):
         """update"""
+        storage.save()
         self.updated_at = datetime.datetime.now()
 
     def __str__(self):
