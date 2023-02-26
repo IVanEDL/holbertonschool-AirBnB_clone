@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 import json
 import os
-
 class FileStorage:
     def __init__(self):
         self.__file_path = "file.json"
@@ -11,18 +10,25 @@ class FileStorage:
         return self.__objects
     
     def new(self, obj):
-        self.__objects[f'{obj.__class__.__name__}.{getattr(obj, "id")}'] = obj.__dict__.copy()
+        self.__objects[f'{obj.__class__.__name__}.{getattr(obj, "id")}'] = obj
 
     
     def save(self):
+        dic = {}
         if len(self.__objects) > 0:
-            with open(self.__file_path, "w") as file:
-                file.write(json.dumps(self.__objects))
+            for key, value in self.__objects.items():
+                try:
+                    dic[key] = value.to_dict()
+                except Exception:
+                    dic[key] = value
+            with open(self.__file_path, "w") as f:
+                json.dump(dic, f)
         else:
             pass
 
     def reload(self):
-        """ return list of instance from json file"""
+        """ return list of instan*ce from json file"""
         if not os.path.exists(self.__file_path):
             return
-        json.load(self.__file_path)
+        with open(self.__file_path) as h:
+            self.__objects = json.load(h)

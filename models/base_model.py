@@ -21,8 +21,8 @@ class BaseModel:
     
     def save(self):
         """update"""
-        storage.save()
         self.updated_at = datetime.datetime.now()
+        storage.save()
 
     def __str__(self):
         return f"[{__class__.__name__}] ({self.id}) ({self.__dict__})"
@@ -31,10 +31,9 @@ class BaseModel:
         r = {}
         r ["__class__"] = __class__.__name__
         for key, value in self.__dict__.items():
-            if type(value) is not int:
-                r[key] = str(value)
-            else:
                 r[key] = value
+        r["created_at"] = self.created_at.isoformat()
+        r["updated_at"] = self.updated_at.isoformat()
         return r
    
    
