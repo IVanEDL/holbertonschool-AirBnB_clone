@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 import cmd, sys, os
-
+from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
 
     prompt = '(hbnb) '
     file = None
+    classes = {'BaseModel': BaseModel}
 
     def emptyline():
         """nothing when empty argument and enter"""
@@ -33,8 +34,24 @@ class HBNBCommand(cmd.Cmd):
         except Exception:
             print("** class doesn't exist **")
 
-    def do_show(args):
-        pass
+    def do_show(self, argv):
+        """Prints the string representation of an instance based on the class name and id"""
+        enter = argv.split()
+        if enter == 0:
+            print("** class name missing **")
+        elif enter[0] not in HBNBCommand.classes.keys():
+            print("** class doesn't exist **")
+        elif len(enter) < 2:
+            print("** instance id missing **")
+        else:
+            key = enter[0] + '.' + enter[1]
+            storage.reload()
+            if not key in storage.all():
+                print("** no instance found **")
+            else:
+                objects = storage.all()
+                if key in objects.keys():
+                    print(objects[key])
 
 if __name__ == '__main__':
         HBNBCommand().cmdloop()
