@@ -3,7 +3,7 @@ import cmd
 import sys
 import os
 from models.base_model import BaseModel
-
+from models import storage
 
 class HBNBCommand(cmd.Cmd):
     """Command line for work in front and backend"""
