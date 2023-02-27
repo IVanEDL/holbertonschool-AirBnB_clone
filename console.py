@@ -6,6 +6,7 @@ from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
+    """Command line for work in front and backend"""
 
     prompt = '(hbnb) '
     file = None
