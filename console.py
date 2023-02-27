@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-import cmd, sys, os
+import cmd
+import sys
+import os
 from models.base_model import BaseModel
 
 
@@ -20,9 +22,10 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, line):
         """ End of file ctrl +d"""
         return True
-     
+
     def do_create(self, args):
-        """Creates a new instance of BaseModel, saves it (to the JSON file) and prints the id."""
+        """Creates a new instance of BaseModel, saves it
+        (to the JSON file) and prints the id."""
         if len(args) < 1:
             print("** class name missing **")
             return
@@ -35,7 +38,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_show(self, argv):
-        """Prints the string representation of an instance based on the class name and id"""
+        """Prints the string representation of an
+        instance based on the class name and id"""
         enter = argv.split()
         if enter == 0:
             print("** class name missing **")
@@ -46,12 +50,13 @@ class HBNBCommand(cmd.Cmd):
         else:
             key = enter[0] + '.' + enter[1]
             storage.reload()
-            if not key in storage.all():
+            if key not in storage.all():
                 print("** no instance found **")
             else:
                 objects = storage.all()
                 if key in objects.keys():
                     print(objects[key])
 
+
 if __name__ == '__main__':
-        HBNBCommand().cmdloop()
+    HBNBCommand().cmdloop()
