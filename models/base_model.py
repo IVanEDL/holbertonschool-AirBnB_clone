@@ -35,7 +35,7 @@ class BaseModel:
 
     def to_dict(self):
         r = {}
-        r["__class__"] = __class__.__name__
+        r["__class__"] = self.__class__.__name__
         for key, value in self.__dict__.items():
             r[key] = value
         r["created_at"] = self.created_at.isoformat()
