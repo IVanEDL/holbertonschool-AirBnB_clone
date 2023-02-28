@@ -1,7 +1,16 @@
 #!/usr/bin/python3
+"""
+    Class Filestorage:
+    this class provide ths few methods 
+    for work whit object, and json files
+    return a dictionary from
+    instance and file.json
+
+    """
 import json
 import os
 class FileStorage:
+    """ Class """
     def __init__(self):
         self.__file_path = "file.json"
         self.__objects = {}
