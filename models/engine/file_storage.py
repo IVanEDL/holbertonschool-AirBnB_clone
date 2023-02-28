@@ -18,21 +18,18 @@ class FileStorage:
     __objects = {}
 
     def all(self):
-        return FileStorage.__objects
+        return self.__objects
 
     def new(self, obj):
         a = f'{obj.__class__.__name__}.{getattr(obj, "id")}'
-        FileStorage.__objects[a] = obj
+        self.__objects[a] = obj
 
     def save(self):
         dic = {}
-        if len(FileStorage.__objects) > 0:
-            for key, value in self.__objects.items():
-                    dic[key] = value.to_dict()
-            with open(FileStorage.__file_path, "w") as f:
-                json.dump(dic, f)
-        else:
-            pass
+        for key, value in self.__objects.items():
+            dic[key] = value.to_dict()
+        with open(FileStorage.__file_path, "w") as f:
+            json.dump(dic, f)
 
     def reload(self):
         """ return list of instan*ce from json file"""
