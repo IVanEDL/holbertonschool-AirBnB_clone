@@ -86,6 +86,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
             else:
                 storage.all().pop(key)
+                storage.save()
         
     def do_all(self, argv):
         input = argv.split()
