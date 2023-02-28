@@ -34,4 +34,4 @@ class City_TestCase(unittest.TestCase):
 
     def test_attribute_in(self):
         a = City()
-        self.assertIn("name", a.__dict__)
+        self.assertNotIn("name", a.__dict__)

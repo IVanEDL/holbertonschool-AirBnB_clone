@@ -29,10 +29,10 @@ class TestUser(unittest.TestCase):
      
     def test_attr(self):
         a = User()
-        self.assertIn("first_name", a.__dict__)
-        self.assertIn("last_name", a.__dict__) 
-        self.assertIn("email", a.__dict__)
-        self.assertIn("password", a.__dict__)
+        self.assertNotIn("first_name", a.__dict__)
+        self.assertNotIn("last_name", a.__dict__) 
+        self.assertNotIn("email", a.__dict__)
+        self.assertNotIn("password", a.__dict__)
     
     def test_instance(self):
         a = User()

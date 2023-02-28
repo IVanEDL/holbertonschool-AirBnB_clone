@@ -1,34 +1,36 @@
 #!/usr/bin/python3
 
+""" Basic testing"""
+
 import unittest
 
-from models.amenity import Amenity
+from models.state import State
 import models
 
-class Amenity_TestCase(unittest.TestCase):
-    """testing for the class AMenity"""
+class State_TestCase(unittest.TestCase):
+    """testing for the class State"""
 
     def test_type(self):
-        a = Amenity()
+        a = State()
         self.assertEqual(type(a.name), str)
 
     def test_public_attribute(self):
-        b = Amenity()
+        b = State()
         b.name = "Martin"
         self.assertEqual(b.name, "Martin")
 
     def test_instance(self):
-        a = Amenity()
-        self.assertIsInstance(a, type(Amenity()))
+        a = State()
+        self.assertIsInstance(a, type(State()))
 
     def testi_same_object(self):
-        a = Amenity()
-        b = Amenity()
+        a = State()
+        b = State()
         self.assertIsNot(a, b)
 
     def test_new_instace_stored(self):
-        self.assertIn(Amenity(), models.storage.all().values())
+        self.assertIn(State(), models.storage.all().values())
 
     def test_attribute_in(self):
-        a = Amenity()
+        a = State()
         self.assertNotIn("name", a.__dict__)
