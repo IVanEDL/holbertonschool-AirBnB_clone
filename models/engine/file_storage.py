@@ -28,10 +28,7 @@ class FileStorage:
         dic = {}
         if len(FileStorage.__objects) > 0:
             for key, value in self.__objects.items():
-                try:
                     dic[key] = value.to_dict()
-                except Exception:
-                    dic[key] = value
             with open(FileStorage.__file_path, "w") as f:
                 json.dump(dic, f)
         else:
