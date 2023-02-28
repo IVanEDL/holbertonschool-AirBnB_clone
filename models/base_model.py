@@ -34,10 +34,8 @@ class BaseModel:
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def to_dict(self):
-        r = {}
+        r = self.__dict__.copy()
         r["__class__"] = self.__class__.__name__
-        for key, value in self.__dict__.items():
-            r[key] = value
         r["created_at"] = self.created_at.isoformat()
         r["updated_at"] = self.updated_at.isoformat()
         return r
