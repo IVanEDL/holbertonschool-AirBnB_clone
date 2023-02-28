@@ -1,17 +1,28 @@
 #!/usr/bin/python3
+"""
+Console for the project
+"""
 import cmd
 import sys
 import os
 import shlex
 from models.base_model import BaseModel
 from models import storage
+from models.engine.file_storage import FileStorage
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+from models.user import User
 
 class HBNBCommand(cmd.Cmd):
     """Command line for work in front and backend"""
 
     prompt = '(hbnb) '
     file = None
-    classes = {'BaseModel': BaseModel}
+    classes = {'BaseModel': BaseModel, 'Amenity': Amenity, 'City': City,
+            'Place': Place, 'Review': Review, 'State': State, 'User' : User}
 
     def emptyline(self):
         """nothing when empty argument and enter"""
