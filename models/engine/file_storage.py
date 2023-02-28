@@ -37,7 +37,8 @@ class FileStorage:
 
     def reload(self):
         """ return list of instan*ce from json file"""
-        if not os.path.exists(self.__file_path):
-            return
-        with open(self.__file_path) as h:
-            self.__objects = json.load(h)
+        if os.path.exists(self.__file_path):
+            with open(self.__file_path) as h:
+                self.__objects = json.load(h)
+        else:
+            pass
