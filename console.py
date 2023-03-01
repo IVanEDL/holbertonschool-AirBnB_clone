@@ -16,13 +16,14 @@ from models.review import Review
 from models.state import State
 from models.user import User
 
+
 class HBNBCommand(cmd.Cmd):
     """Command line for work in front and backend"""
 
     prompt = '(hbnb) '
     file = None
     classes = {'BaseModel': BaseModel, 'Amenity': Amenity, 'City': City,
-            'Place': Place, 'Review': Review, 'State': State, 'User' : User}
+               'Place': Place, 'Review': Review, 'State': State, 'User': User}
 
     def emptyline(self):
         """nothing when empty argument and enter"""
@@ -87,7 +88,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 storage.all().pop(key)
                 storage.save()
-        
+
     def do_all(self, argv):
         input = argv.split()
         if not input:
@@ -121,6 +122,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 setattr(storage.all()[key], enter[2], enter[3])
                 storage.save()
+
 
 if __name__ == '__main__':
     """infinity loops"""
