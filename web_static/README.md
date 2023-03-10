@@ -1,0 +1,1 @@
+This folder corresponds to the web static of the AirBnB project.
