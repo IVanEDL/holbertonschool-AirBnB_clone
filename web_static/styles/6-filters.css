@@ -55,7 +55,8 @@
 .locations:hover .popover, .amenities:hover .popover {
     display: block;
     border: 1px solid #DDDDDD;
-    /*list-style-type: none;*/
+    list-style-type: none;
+    text-decoration: none;
     background-color: #FAFAFA;
     position: relative;
     border-radius: 4px;
