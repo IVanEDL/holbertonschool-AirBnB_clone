@@ -36,6 +36,11 @@ article h2 {
     height: 60px;
     font-size: 30px;
     align-items: center;
+    border-radius: 50%;
+    display: flex;
+    margin-left: 0;
+    justify-content: center;
+    align-items: right;
 }
 
 .information {
@@ -48,9 +53,28 @@ article h2 {
     margin-top: 10px;
 }
 
-.max_guests, .number_rooms, .number_bathrooms {
+.max_guest, .number_rooms, .number_bathrooms {
     width: 100px;
+    text-align: center;
+    padding-top: 60px;
+    margin-left: 20px;
+}
+
+.max_guest{
+    background: url(../images/icon_group.png) no-repeat center;
+}
+
+.number_rooms{
+    background: url(../images/icon_bed.png) no-repeat center;
+}
+
+.number_bathrooms{
+    background: url(../images/icon_bath.png) no-repeat center;
+}
+
+.user {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    text-align: left;
 }
